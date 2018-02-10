@@ -26,7 +26,11 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
+    
+    public function username()
+    {
+        return 'username';
+    }
     /**
      * Create a new controller instance.
      *
@@ -45,19 +49,5 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('auth.login');
-    }
-
-    /**
-     * Validate the user login request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
-     */
-    protected function validateLogin(Request $request)
-    {
-        $this->validate($request, [
-            $this->username() => 'required|string',
-            'password' => 'required|string'
-        ]);
     }
 }
