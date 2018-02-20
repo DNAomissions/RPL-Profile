@@ -55,12 +55,32 @@
 			            </ul>
 			        @else
 			        	<ul class="nav navbar-nav navbar-right scroll">
+			        		<li>
+			        			<a href="{{url('/home')}}" class="navMenu" data-toggle="tooltip" data-placement="bottom" title="Beranda" id="navBeranda"><i class="fas fa-fw fa-home"></i></a>
+			        		</li>
+			        		<li class="dropdown">
+			                	<a href="#" class="dropdown-toggle navMenu" role="button" title="Informasi" id="navInformasi" data-placement="bottom" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"><i class="fas fa-fw fa-info"></i> <i class="fas fa-fw fa-caret-down"></i></a>
+			                	<ul class="dropdown-menu">
+			                		<li class="dropdown-item">
+			                			<a href="{{url('/berita')}}" class="nav-link" data-toggle="tooltip" data-placement="right" title="Berita" id="navBerita"><i class="far fa-fw fa-bell"></i>&nbsp;Berita</a>
+			                		</li>
+			                		<li class="dropdown-item">
+			                			<a class="nav-link" data-toggle="tooltip" data-placement="right" title="Guru" id="navGuru" href="{{url('/guru')}}"><i class="far fa-fw fa-id-card"></i>&nbsp;Guru</a>
+			                		</li>
+			                		<li class="dropdown-item">
+			                			<a class="nav-link" data-toggle="tooltip" data-placement="right" title="Agenda" id="navAgenda" href="{{url('/agenda')}}"><i class="far fa-fw fa-calendar"></i>&nbsp;Agenda</a>
+			                		</li>
+			                		<li class="dropdown-item">
+			                			<a class="nav-link" data-toggle="tooltip" data-placement="right" title="Download" id="navDownload" href="#"><i class="fas fa-fw fa-download"></i>&nbsp;Download</a>
+			                		</li>
+			                	</ul>
+			                </li>
 			        		<li class="dropdown">
 			        			<a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><i class="fas fa-fw fa-user"></i> {{Auth::user()->name}} <i class="fas fa-fw fa-caret-down"></i></a>
 
 			        			<ul class="dropdown-menu">
 			        				<li class="dropdown-item">
-			        					<a href="#"><i class="fas fa-fw fa-user-circle"></i> Ubah Profile</a>
+			        					<!-- <a href="#"><i class="fas fa-fw fa-user-circle"></i> Ubah Profile</a> -->
 			        				</li>
 			        				<li class="divider"></li>
 			        				<li class="dropdown-item">

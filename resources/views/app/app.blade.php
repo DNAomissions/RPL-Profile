@@ -81,7 +81,7 @@
 	@guest
 		@include('app.footer')
 	@else
-							
+		@include('admin.wrapper')			
 	@endguest
 
 	<a href="#" id="buat-keatas" class="btn-dark buat-keatas"><i class="fas fa-fw fa-chevron-up"></i></a>
