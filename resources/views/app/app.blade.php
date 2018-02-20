@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>RPL SMK Negeri 11 Bandung</title>
+	
+	<!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="{{asset('img/RPL-Favicon.png')}}">
@@ -24,7 +27,10 @@
 			<link rel="stylesheet" type="text/css" href="{{asset('vendor/gallery/blueimp-gallery.min.css')}}">
 		<!-- Custom Style -->
 			<link rel="stylesheet" type="text/css" href="{{asset('vendor/style.css')}}">
-
+		<!-- SweetAlert -->
+			<link rel="stylesheet" type="text/css" href="{{asset('vendor/sweetalert/sweetalert2.css')}}">
+		<!-- Wrapper -->
+			<link rel="stylesheet" type="text/css" href="{{asset('css/wrapper.css')}}">
 		<style type="text/css">
 			.topbar {
 				background:url(<?=asset('img/lines.png')?>);	
@@ -48,6 +54,17 @@
 			#maps-11{
 				height: 100px;
 			}
+			.buat-keatas{
+				position: fixed;
+				bottom: 20px;
+				right:20px;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				padding-top:17px;
+				z-index: 99999999; 
+				display: none;
+			}
 		</style>
 		@yield('css')
 </head>
@@ -56,17 +73,21 @@
 	<div class="loading"></div>
 	<div class="topbar animated fadeInLeftBig"></div>
 	@include('app.header')
-
+	
 	<div class="content">
 		@yield('content')
 	</div>
+	
+	@guest
+		@include('app.footer')
+	@else
+							
+	@endguest
 
-	@include('app.footer')
-
-
+	<a href="#" id="buat-keatas" class="btn-dark buat-keatas"><i class="fas fa-fw fa-chevron-up"></i></a>
 	<!-- JS Module -->
 		<!-- Jquery -->
-			<script type="text/javascript" src="{{asset('jquery-3.1.1.min.js')}}"></script>
+			<script type="text/javascript" src="{{asset('jquery-3.3.1.min.js')}}"></script>
 			<script type="text/javascript" src="{{asset('vendor/jquery.js')}}"></script>
 		<!-- WOW Animate -->
 			<script type="text/javascript" src="{{asset('vendor/wow/wow.min.js')}}"></script>
@@ -77,15 +98,47 @@
 			<script type="text/javascript" src="{{asset('vendor/respond/respond.js')}}"></script>
 		<!-- Gallery -->
 			<script type="text/javascript" src="{{asset('vendor/gallery/jquery.blueimp-gallery.min.js')}}"></script>
+		<!-- SweetAler -->
+			<script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert2.js')}}"></script>
+		<!-- Wrapper -->
+			<script type="text/javascript" src="{{asset('js/wrapper.js')}}"></script>
 		<!-- Custom JS -->
-			<!-- <script type="text/javascript" src="{{asset('vendor/script.js')}}"></script> -->
-
 		@yield('js')
 		<script type="text/javascript">
 			$(window).on('load',function(){
 				$('.loading').fadeOut('slow');
 			});
 			$(document).ready(function(){
+				/*Buat Keatas*/
+				var fixed = false;
+				$(document).scroll(function(){
+					if($(this).scrollTop() > 250){
+						if (!fixed) {
+							fixed = true;
+							$('#buat-keatas').show("slow", function() {
+								$('#buat-keatas').css({
+									position: 'fixed',
+									display: 'block'
+								});
+							});
+						}
+					}else{
+						if (fixed) {
+							fixed = false;
+							$('#buat-keatas').hide("slow", function() {
+								$('#buat-keatas').css({
+									display: 'none'
+								});
+							});
+						}
+					}
+				});
+
+				$('#buat-keatas').click(function(){
+					$("html , body").animate({ scrollTop : 0 },800);
+				});
+
+
 				/*Tooltip*/
 				$('#aksesAdmin').tooltip();
 				$('#navBeranda').tooltip();
@@ -162,9 +215,10 @@
 		          map: map
 		        });
 		      }
-
 		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvReOp8AQyNPv_xR8GRfvNYocnXhdupGY&callback=initMap"></script>
+		<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvReOp8AQyNPv_xR8GRfvNYocnXhdupGY&callback=initMap"></script> -->
 
+
+		@include('app.alert')
 </body>
 </html>

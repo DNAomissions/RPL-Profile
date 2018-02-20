@@ -17,13 +17,12 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/home',function () {
-	return view('home');
-});
+Route::get('/home','HomeController@index');
 
-Route::get('/berita',function () {
-	return view('berita');
-});
+Route::get('/admin/home','AdminController@index');
+Route::get('/admin/berita','AdminController@berita');
+
+Route::get('/berita','BeritaController@index');
 
 Route::get('/guru',function () {
 	return view('guru');
