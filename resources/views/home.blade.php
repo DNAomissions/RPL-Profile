@@ -45,10 +45,11 @@
 				                        <div class="row slide-margin">
 				                            <div class="col-sm-6">
 				                                <div class="carousel-content animation animated-item-1">
-				                                	<h3 class="animation animated-item-2">{{$PRPL->judul}}</h3>
+				                                	<h3 class="animation animated-item-2">{!! $PRPL->judul !!}</h3>
 				                                    <h5 class="animation animated-item-3">
-				                                    	{{$PRPL->keterangan}}
+				                                    	{!! substr($PRPL->keterangan,0,200) !!}...
 				                                    </h5>
+				                                    <button type="button" class="btn-profile animation animated-item-4" data-toggle="modal" data-target="#modal{{$PRPL->slide}}">READ MORE</button>
 				                                </div>
 				                            </div>
 
@@ -67,10 +68,11 @@
 				                        <div class="row slide-margin">
 				                            <div class="col-sm-6">
 				                                <div class="carousel-content animation animated-item-1">
-				                                	<h3 class="animation animated-item-2">{{$PRPL->judul}}</h3>
+				                                	<h3 class="animation animated-item-2">{!! $PRPL->judul !!}</h3>
 				                                    <h5 class="animation animated-item-3">
-				                                    	{{$PRPL->keterangan}}
+				                                    	{!! substr($PRPL->keterangan,0,200) !!}...
 				                                    </h5>
+				                                    <button type="button" class="btn-profile animation animated-item-4" data-toggle="modal" data-target="#modal{{$PRPL->slide}}">READ MORE</button>
 				                                </div>
 				                            </div>
 
@@ -84,8 +86,8 @@
 				                    </div>
 				                </div><!--/.item-->
 				            @endif
+				            
 		                @endforeach
-
 		            </div><!--/.carousel-inner-->
 		        </div><!--/.carousel-->
 		        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
@@ -96,6 +98,23 @@
 		        </a>
 			</div>
 		</div>
+		<!-- Modal -->
+				            <div class="modal fade" id="#modalslide1" role="dialog">
+				            	<div class="modal-dialog">
+				            		<div class="modal-content">
+				            			<div class="modal-header">
+				            				<button type="button" class="close" data-dismiss="modal">&times;</button>
+                               				<h4 class="modal-title">Modal Header</h4>
+				            			</div>
+				            			<div class="modal-body">
+				            				
+				            			</div>
+				            			<div class="modal-footer">
+				            				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				            			</div>
+				            		</div>
+				            	</div>
+				            </div>
 	<!-- End Profil RPL -->
 
 	<!-- Start Visi Misi -->
@@ -261,6 +280,11 @@
 		<div id="peluang-kerja" class="peluang-kerja">
 			<div class="overlay spacer">
 				<div class="PK-header wowload flipInY">Peluang Kerja</div>
+				<div class="PK-body wowload fadeInLeft">
+					<div class="container">
+						{!! $peluangKerja->isi !!}
+					</div>
+				</div>
 			</div>
 		</div>
 	<!-- End Peluang Kerja -->

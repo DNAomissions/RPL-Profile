@@ -1,4 +1,5 @@
 <?php
+use App\Berita;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,10 +25,17 @@ Route::get('/admin/berita','AdminController@berita');
 
 Route::get('/berita','BeritaController@index');
 
-Route::get('/guru',function () {
-	return view('guru');
-});
+Route::get('/guru','GuruController@index');
 
 Route::get('/agenda',function() {
 	return view('agenda');
 });
+
+/*Search*/
+Route::get('/berita/search','BeritaController@search');
+
+/*Update*/
+
+Route::post('/beranda/slide/edit/{id}','ProfilRPLController@update');
+Route::post('/beranda/visi-misi/edit/{id}','VisiMisiController@update');
+Route::post('/beranda/peluang-kerja/edit/{id}','PeluangKerjaController@update');

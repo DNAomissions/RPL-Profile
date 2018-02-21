@@ -7,6 +7,15 @@
 				<div class="col-md-8 col-md-offset-2 Berita-header wowload flipInY">
 					Berita Terkini
 				</div>
+					<form action="/berita/search" method="get" class="search">
+						{!! csrf_field() !!}
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><button class="search-btn" type="submit"><i class="fas fa-fw fa-search"></i></button></span>
+								<input class="form-control" placeholder="Search!" name="search"></input>
+							</div>
+						</div>
+					</form>
 				@if(count($berita))
 					@foreach($berita as $bt)
 						<div class="berita-box">
