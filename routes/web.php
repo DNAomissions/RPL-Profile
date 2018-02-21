@@ -27,12 +27,15 @@ Route::get('/berita','BeritaController@index');
 
 Route::get('/guru','GuruController@index');
 
-Route::get('/agenda',function() {
-	return view('agenda');
+Route::get('/agenda','AgendaController@index');
+
+Route::get('/download',function(){
+	return view('download');
 });
 
 /*Search*/
 Route::get('/berita/search','BeritaController@search');
+Route::get('/agenda/search','AgendaController@search');
 
 /*Update*/
 

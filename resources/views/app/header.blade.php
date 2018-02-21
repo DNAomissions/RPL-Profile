@@ -42,7 +42,7 @@
 			                			<a class="nav-link" data-toggle="tooltip" data-placement="right" title="Agenda" id="navAgenda" href="{{url('/agenda')}}"><i class="far fa-fw fa-calendar"></i>&nbsp;Agenda</a>
 			                		</li>
 			                		<li class="dropdown-item">
-			                			<a class="nav-link" data-toggle="tooltip" data-placement="right" title="Download" id="navDownload" href="#"><i class="fas fa-fw fa-download"></i>&nbsp;Download</a>
+			                			<a class="nav-link" data-toggle="tooltip" data-placement="right" title="Download" id="navDownload" href="{{url('/download')}}"><i class="fas fa-fw fa-download"></i>&nbsp;Download</a>
 			                		</li>
 			                	</ul>
 			                </li>
